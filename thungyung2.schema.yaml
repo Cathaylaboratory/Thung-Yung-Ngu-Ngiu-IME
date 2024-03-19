@@ -1,0 +1,125 @@
+# Rime schema
+# encoding: utf-8
+
+schema:
+  schema_id: thungyung2
+  name: 通用易打吳語輸入法
+  version: "2"
+  author:
+    - 陳海明 <geotian@proton.me>
+  description: |
+    拼寫方案採用《吳語拉丁式注音法》搭標準吳語拼音
+  dependencies:
+    - luna_pinyin
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [ 中文, 西文 ]
+  - name: full_shape
+    states: [ 半角, 全角 ]
+  - name: ascii_punct
+    states: [ 。，, ．， ]
+
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - script_translator
+    - reverse_lookup_translator
+  filters:
+    - uniquifier
+
+speller:
+  alphabet: zyxwvutsrqponmlkjihgfedcba
+  delimiter: " '"
+  algebra:
+    # xform/  - 改寫（替換，弗共存）
+    # derive  - 衍生（共存，單向模糊音）
+    # abbrev  - 簡拼（出字優先級傍前兩組低）
+    # fuzz    - 略拼（衹用在組詞，弗出單字）
+    # xlit    - 變換（適合大量个一對一變換）
+    # erase   - 刪除
+    - abbrev/^([bcdfghjklprstvwxyz]).+$/$1/       # 對齊標準行
+    - derive/^dz/z/                               # 模糊“從”“邪”
+    - derive/^z/dz/ 
+    - derive/(.*)aoq/$1aq/                        # 模糊前後aq
+    - derive/(.*)ae/$1e/                          # 模糊“蘭”“雷”
+    - derive/^r/gh/
+    - derive/^gh/r/
+    - derive/^ni/gni/
+    - derive/^tzi/ci/                             # 以下四行是模糊分尖團音
+    - derive/^tsi/chi/
+    - derive/^tsi/tshi/
+    - derive/^zi/ji/
+    - derive/^si/xi/
+    - derive/^u$1/w$1/
+    - derive/^i$1/y$1/       
+    - derive/^yi/i/   
+    - derive/^wu/u/   
+    - derive/^dji/ji/                           
+    - derive/^(c|ch|d?j|gn|x|y)i([aeou])/$1$2/    # 本行不要改動
+    - derive/^tzyu/tzy/                           # 以下四行是模糊“書”“詩”
+    - derive/^tsyu/tsy/
+    - derive/^zyu/zy/
+    - derive/^syu/sy/
+    - derive/(.*)ie/$1i/                          # 模糊“煙”“衣”
+    - derive/(.*)aon/$1ong/                       #以下兩行是混合吳拼
+    - derive/(.*)aoq/$1ak/ 
+    - derive/(.*)aon/$1an/                        # 模糊前後an
+    - derive/(.*)aoq/$1aq/                        # 模糊前後aq
+    - derive/(.*)eq/$1eh/                          # 以下十行是混合吳拼
+    - derive/(.*)eh/$1eq/
+    - derive/(.*)aq/$1ah/
+    - derive/(.*)aoq/$1aoh/ 
+    - derive/(.*)iq/$1ih/ 
+    - derive/(.*)uq/$1uh/ 
+    - derive/(.*)oq/$1oh/ 
+    - derive/(.*)on/$1ung/ 
+    - derive/(.*)an/$1ang/
+    - derive/(.*)ian/$1iang/
+    - derive/(.*)en/$1eng/
+    - derive/(.*)in/$1ing/
+    - derive/^ue/we/
+
+
+
+translator:
+  dictionary: thungyung2
+  prism: thungyung2
+  spelling_hints: 5
+
+reverse_lookup:
+  dictionary: luna_pinyin
+  prefix: "`"
+  suffix: "'"
+  tips: 〔拼音〕
+  preedit_format:
+    - xform/([nl])v/$ü/
+    - xform/([nl])ue/$üe/
+    - xform/([jqxy])v/$u/
+
+punctuator:
+  import_preset: default
+
+key_binder:
+  import_preset: default
+
+recognizer:
+  import_preset: default
+  patterns:
+    reverse_lookup: "`[a-z]*'?$"

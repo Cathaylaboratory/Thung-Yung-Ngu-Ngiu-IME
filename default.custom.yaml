@@ -1,0 +1,6 @@
+# default.custom.yaml
+
+patch:
+  schema_list:
+    - schema: thungyung2        # 通用吳語輸入法
+    - schema: ngutele2

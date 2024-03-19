@@ -1,0 +1,61 @@
+# Rime schema
+# encoding: utf-8
+
+schema:
+  schema_id: ngutele2
+  name: NguTele2
+  version: "2"
+  author:
+    - 陳海明 <geotian@proton.me>
+  description: |
+    拼寫方案採用《標準吳語》
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [ 中文, 西文 ]
+  - name: full_shape
+    states: [ 半角, 全角 ]
+  - name: ascii_punct
+    states: [ 。，, ．， ]
+
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - fallback_segmentor
+  translators:
+    - script_translator
+  filters:
+    - uniquifier
+
+speller:
+  alphabet: yxurqonigea
+  delimiter: " '"
+  algebra:
+    - abbrev/^([hrx]).+$/$1/       # 對齊標準行
+ 
+translator:
+  dictionary: ngutele2
+  prism: ngutele2
+  spelling_hints: 5
+
+punctuator:
+  import_preset: default
+
+key_binder:
+  import_preset: default
+
+recognizer:
+  import_preset: default
+  patterns:
+    reverse_lookup: "`[a-z]*'?$"
