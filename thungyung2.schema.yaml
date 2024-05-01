@@ -58,6 +58,7 @@ speller:
     - derive/^dz/z/                               # 模糊“從”“邪”
     - derive/^z/dz/ 
     - derive/(.*)aoq/$1aq/                        # 模糊前後aq
+    - derive/(.*)aoq/$1eq/ 
     - derive/(.*)ae/$1e/                          # 模糊“蘭”“雷”
     - derive/^r/gh/
     - derive/^gh/r/
