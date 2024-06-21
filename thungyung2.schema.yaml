@@ -6,7 +6,7 @@ schema:
   name: 通用易打吳語輸入法
   version: "2"
   author:
-    - 陳海明 <geotian@proton.me>
+    - Cathaylab <geotian@proton.me>
   description: |
     拼寫方案採用《吳語拉丁式注音法》搭標準吳語拼音
   dependencies:
@@ -69,9 +69,12 @@ speller:
     - derive/^zi/ji/
     - derive/^si/xi/
     - derive/^u$1/w$1/
-    - derive/^i$1/y$1/       
+    - derive/^i$1/y$1/     
     - derive/^yi/i/   
     - derive/^wu/u/   
+    - derive/^i/yi/   
+    - derive/^u/wu/ 
+
     - derive/^dji/ji/                           
     - derive/^(c|ch|d?j|gn|x|y)i([aeou])/$1$2/    # 本行不要改動
     - derive/^tzyu/tzy/                           # 以下四行是模糊“書”“詩”
@@ -83,7 +86,7 @@ speller:
     - derive/(.*)aoq/$1ak/ 
     - derive/(.*)aon/$1an/                        # 模糊前後an
     - derive/(.*)aoq/$1aq/                        # 模糊前後aq
-    - derive/(.*)eq/$1eh/                          # 以下十行是混合吳拼
+    - derive/(.*)eq/$1eh/                          # 以下是混合吳拼
     - derive/(.*)eh/$1eq/
     - derive/(.*)aq/$1ah/
     - derive/(.*)aoq/$1aoh/ 
@@ -95,7 +98,27 @@ speller:
     - derive/(.*)ian/$1iang/
     - derive/(.*)en/$1eng/
     - derive/(.*)in/$1ing/
-    - derive/^ue/we/
+    - derive/^ue/we/                                 # 模糊前後"w""u"
+    - derive/^uo/wo/
+    - derive/^ua/wa/
+    - derive/^ueh/weh/
+    - derive/^uoe/woe/
+    - derive/^ieu/yeu/                               # 模糊前後"y""i"
+    - derive/^iau/yau/
+    - derive/^ia/ya/
+    - derive/^ioe/yoe/
+    - derive/^ian/yan/
+    - derive/^ie/ye/
+    - derive/^iun/yun/
+    - derive/^iah/yah/
+    - derive/^in/yin/
+    - derive/^ioh/yoh/
+    - derive/^ion/yon/
+    - derive/^iuh/yuh/
+    - derive/^ih/yih/
+
+    
+  
 
 
 
