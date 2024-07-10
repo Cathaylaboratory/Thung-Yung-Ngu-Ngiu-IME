@@ -3,7 +3,7 @@
 
 schema:
   schema_id: thungyung2
-  name: 通用易打吳語輸入法
+  name: 通用吳語輸入法
   version: "2"
   author:
     - Cathaylab <geotian@proton.me>
@@ -98,8 +98,6 @@ speller:
     - derive/(.*)ian/$1iang/
     - derive/(.*)en/$1eng/
     - derive/(.*)in/$1ing/
-    - derive/(.*)ao/$1au/
-    - derive/(.*)er/$1el/
     - derive/^ue/we/                                 # 模糊前後"w""u"
     - derive/^uo/wo/
     - derive/^ua/wa/
@@ -118,6 +116,8 @@ speller:
     - derive/^ion/yon/
     - derive/^iuh/yuh/
     - derive/^ih/yih/
+    - derive/(.*)au/$1ao/
+    - derive/^el/er/
 
     
   
