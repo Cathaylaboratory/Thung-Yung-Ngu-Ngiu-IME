@@ -6,7 +6,7 @@ schema:
   name: NguTele2
   version: "2"
   author:
-    - 陳海明 <geotian@proton.me>
+    - cathaylab <geotian@proton.me>
   description: |
     拼寫方案採用《標準吳語》
 
