@@ -118,7 +118,7 @@ speller:
     - derive/^ih/yih/
     - derive/(.*)au/$1ao/
     - derive/^el/er/
-
+    - derive/^ts/tsh/
     
   
 
