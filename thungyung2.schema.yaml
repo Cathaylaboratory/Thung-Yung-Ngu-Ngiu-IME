@@ -99,6 +99,7 @@ speller:
     - derive/(.*)en/$1eng/
     - derive/(.*)in/$1ing/
     - derive/(.*)ao/$1au/
+    - derive/(.*)er/$1el/
     - derive/^ue/we/                                 # 模糊前後"w""u"
     - derive/^uo/wo/
     - derive/^ua/wa/
